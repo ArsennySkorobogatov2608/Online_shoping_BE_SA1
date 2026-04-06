@@ -1,6 +1,6 @@
 //TODO - 1: name,  2: Title, 3: Price, в этом классе делаем инкпсуляцию, после нужно в main создать 2 объекта,
 public class Catalog {
-    private   int ID;
+    private int ID;
     private String Title;
     private double price;
 
