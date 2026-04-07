@@ -6,7 +6,8 @@ public class Category {
     private String Title;
     private double price;
     private String Description;
-    private String ADD_SHOW;
+
+    private static ArrayList<String> ADD_SHOW_Category = new ArrayList<>();
 
     public Category() {}
 
@@ -18,12 +19,11 @@ public class Category {
         this.Description = Description;
     }
 
-    public Category(String ADD_SHOW) {
-        this.ADD_SHOW = ADD_SHOW;
-    }
-
     public int getID() {
         return this.id;
+    }
+    public void set_ID(int id) {
+        this.id = id;
     }
 
     public String get_Title() {
@@ -47,18 +47,15 @@ public class Category {
         this.Description = Description;
     }
 
-    ArrayList<String> ADD_SHOW_Category = new ArrayList<>();
 
-    public void ADD_Category(String ADD_SHOW) {
-        this.ADD_SHOW = ADD_SHOW;
-        ADD_SHOW_Category.add(ADD_SHOW);
+    public void ADD_Category(String categoryName) {
+        ADD_SHOW_Category.add(categoryName);
     }
 
-    public String SHOW_Category() {
-        for (String i : ADD_SHOW_Category) {
-            System.out.println(i);
+    public void SHOW_Category() {
+        System.out.println("Список категорий:");
+        for (String item : ADD_SHOW_Category) {
+            System.out.println("- " + item);
         }
-        return this.ADD_SHOW;
     }
-
 }

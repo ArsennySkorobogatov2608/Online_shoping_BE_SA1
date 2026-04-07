@@ -1,37 +1,38 @@
-//TODO - 1: name,  2: Title, 3: Price, в этом классе делаем инкпсуляцию, после нужно в main создать 2 объекта,
-public class Catalog {
-    private int ID;
-    private String Title;
-    private double price;
+import java.util.ArrayList;
 
-    public Catalog() {}
+public class Catalog extends Category {
+    private static int categoryCount = 0;
+    private static int subCategoryCount = 0;
 
-    public Catalog(int ID, String Title, double price) {
-        this.ID = ID;
-        this.Title = Title;
-        this.price = price;
-    }
+    private static ArrayList<String> Category = new ArrayList<>();
+    private static ArrayList<String> SubCategory = new ArrayList<>();
 
-    public int get_ID() {
-        return this.ID;
-    }
-    public void set_ID(int ID) {
-        this.ID = ID;
+
+    @Override
+    public void ADD_Category(String name) {
+        super.ADD_Category(name);
+        Category.add(name);
+        categoryCount++;
+        System.out.println("Добавлена категория: " + name);
     }
 
-    public String get_Title() {
-        return this.Title;
-    }
-    public void set_Title(String Title) {
-        this.Title = Title;
+    public void ADD_SubCategory(String subName) {
+        SubCategory.add(subName);
+        subCategoryCount++;
+        System.out.println("Добавлена подкатегория: " + subName);
     }
 
-    public double get_Price() {
-        return this.price;
-    }
-    public void set_Price(double price) {
-        this.price = price;
+    @Override
+    public void SHOW_Category() {
+        System.out.println("\nкаталог: ");
+
+        for(String g : Category) {
+            System.out.println("категория: " + g);
+            for (String f : SubCategory) {
+                System.out.println("подкатегория: " + f);
+            }
+        }
+        System.out.println("Итого категорий: " + categoryCount);
+        System.out.println("Итого подкатегорий: " + subCategoryCount);
     }
 }
-
-
