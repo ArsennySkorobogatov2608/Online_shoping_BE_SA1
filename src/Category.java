@@ -58,4 +58,7 @@ public class Category {
             System.out.println("- " + item);
         }
     }
+
+    public void ShowInfo () {
+    }
 }
