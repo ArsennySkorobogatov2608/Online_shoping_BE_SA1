@@ -1,64 +1,51 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
-public class Category {
+public abstract class Category {
     private static int auto_ID = 0;
     private int id;
-    private String Title;
-    private double price;
-    private String Description;
+    private String title;
+    private String description;
 
-    private static ArrayList<String> ADD_SHOW_Category = new ArrayList<>();
+
+    protected static ArrayList<String> categoryList = new ArrayList<>();
 
     public Category() {}
 
-    public Category(String Title, double price, String Description) {
-        auto_ID++;
-        this.id = auto_ID;
-        this.Title = Title;
-        this.price = price;
-        this.Description = Description;
-    }
-
-    public int getID() {
-        return this.id;
-    }
-    public void set_ID(int id) {
-        this.id = id;
-    }
-
-    public String get_Title() {
-        return this.Title;
-    }
-    public void set_Title(String Title) {
-        this.Title = Title;
-    }
-
-    public double get_Price() {
-        return this.price;
-    }
-    public void set_Price(double price) {
-        this.price = price;
-    }
-
-    public String get_Description() {
-        return this.Description;
-    }
-    public void set_Description(String Description) {
-        this.Description = Description;
+    public Category(String title, String description) {
+        this.id = ++auto_ID;
+        this.title = title;
+        this.description = description;
     }
 
 
-    public void ADD_Category(String categoryName) {
-        ADD_SHOW_Category.add(categoryName);
+    public int getId() { return id; }
+    public String getTitle() { return title; }
+    public String getDescription() { return description; }
+
+    public abstract void showInfo();
+
+
+    public void addCategory(String categoryName) {
+        categoryList.add(categoryName);
     }
 
-    public void SHOW_Category() {
-        System.out.println("Список категорий:");
-        for (String item : ADD_SHOW_Category) {
-            System.out.println("- " + item);
-        }
+    public void showCategories() {
+        System.out.println("Категории: " + categoryList);
     }
 
-    public void ShowInfo () {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Category)) return false;
+        Category category = (Category) o;
+        return Objects.equals(title, category.title);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title);
+    }
+
+    public abstract double getFinalPrice();
 }

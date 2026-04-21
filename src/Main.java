@@ -1,37 +1,36 @@
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
+        Catalog storeCatalog = new Catalog();
 
-        Category category1 = new Category("товар такой то", 50.1, "описание товара");
-        System.out.println(category1.getID() + " " + category1.get_Title() + " "
-                + category1.get_Price() + " " + category1.get_Description());
+        storeCatalog.addCategory("Электроника");
+        storeCatalog.addSubCategory("Смартфоны");
+        storeCatalog.addSubCategory("Ноутбуки");
 
-        Category category2 = new Category("товар вот этот", 50.2, "описание товара");
-        System.out.println(category2.getID() + " " + category2.get_Title() + " "
-                + category2.get_Price() + " " + category2.get_Description());
+        storeCatalog.addCategory("Дом и сад");
+        storeCatalog.addSubCategory("Инструменты");
 
-        Category category3 = new Category("товар вот токй то вот", 50.2, "описание товара");
-//        System.out.println(category3.getID() + " " + category3.get_Title()
-//                + " " + category3.get_Price() + " " + category3.get_Description());
+        storeCatalog.showCatalog();
 
-        category3.ShowInfo();
+        System.out.println("\nсоздание товаров");
+
+        Product phone = new MobileDevice("iPhone 15", 90000.0, "Новинка от Apple");
+        Product trimmer = new GardenItem("Газонокосилка", 15000.0, "Мощная, бензиновая");
+        Electronic laptop = new Electronic("MacBook Air", 120000.0, "На чипе M2");
+
+        Product.showAllProducts();
 
 
-        Catalog shop = new Catalog();
+        System.out.println("\nпроверка оплаты");
+        System.out.println("Статус оплаты до: " + phone.isPaid());
+        phone.pay(90000.0);
+        System.out.println("Статус оплаты после: " + phone.isPaid());
 
-        shop.ADD_Category("Электроника");
-        shop.ADD_SubCategory("Смартфоны");
-        shop.ADD_SubCategory("Ноутбуки");
-
-        shop.ADD_Category("Одежда");
-        shop.ADD_SubCategory("Футболки");
-
-        shop.SHOW_Category();
-
+        Product phone2 = new MobileDevice("iPhone 15", 90000.0, "Новинка от Apple");
+        System.out.println("\nСравнение одинаковых товаров: " + phone.equals(phone2));
 
     }
 }
+
 
 
 //TODO - этап 2:
@@ -54,3 +53,16 @@ public class Main {
 // 4.2 - создать несколько разных товаров в Product в списке в виде Array list
 // 4.3 - надо в show info что бы весть список показать на экране
 // 4.4 -
+
+
+//TODO 5.1 - 2 новых интерфейса
+// Payble - помогатеот объектам товаров
+//  1- возвращает double - GetFinalPrice
+//  2- void - pay с параметром double(amount)
+//  3- bool - isPaid
+// Financible - помогате объектам клиентам
+//  1- double - ChekBalance (без параметра)
+//  2- bool - HasEnouthMoney (double emouth)
+//  3-String - GetFinalsesStatus (без параметра)
+// 5.2 - необходимо все классы расширять при помощи Hashcode, equals, instanceof и подобного
+// 5.3 - сравнивать объекты по цвету, названию и.т.д
