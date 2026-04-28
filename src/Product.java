@@ -1,9 +1,8 @@
 import java.util.ArrayList;
 
-abstract class Product extends Category implements Payable {
+public abstract class Product extends Category implements Payable {
     private double price;
     private boolean paid = false;
-
     protected static ArrayList<Product> allProducts = new ArrayList<>();
 
     public Product() {}
@@ -24,17 +23,22 @@ abstract class Product extends Category implements Payable {
         if (amount >= price) {
             paid = true;
             System.out.println(getTitle() + " оплачен.");
+        } else {
+            System.out.println("недостаточно средств для " + getTitle());
         }
     }
 
     @Override
     public boolean isPaid() { return paid; }
 
-    // Этап 4.3: Общий вывод всех продуктов
     public static void showAllProducts() {
-        System.out.println("Список всех товаров");
+        System.out.println("\nвсе товары");
         for (Product p : allProducts) {
             p.showInfo();
         }
+    }
+
+    public boolean canCompareWith(Product other) {
+        return other != null && this.getClass().equals(other.getClass());
     }
 }

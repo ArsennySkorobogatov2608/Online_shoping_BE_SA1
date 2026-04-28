@@ -1,6 +1,5 @@
 public interface Financeable {
-
-    double ChekBalance();
-    boolean HasEnoughMoney(double Enouth);
-    String GetFinalsesStatus();
+    double checkBalance();
+    boolean hasEnoughMoney(double amount);
+    String getFinancialStatus();
 }

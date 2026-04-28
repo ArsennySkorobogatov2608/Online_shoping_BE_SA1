@@ -1,22 +1,13 @@
-public class GardenItem extends Product{
-    // пока не трогаем
-
-    public GardenItem (String газонокосилка, double v, String s) {}
+public class GardenItem extends Product {
+    public GardenItem(String title, double price, String description) {
+        super(title, price, description);
+    }
 
     @Override
     public void showInfo() {
-        System.out.println("[Электроника] ID: " + getId() + " | Название: " + getTitle() + " | Цена: " + getPrice());
-    }
-
-    @Override
-    public double GetFinalPrice() {
-        return 0;
-    }
-    @Override
-    public void Pay(double amount) {
-    }
-    @Override
-    public boolean IsPaid() {
-        return false;
+        System.out.println("[дом и сад] id: " + getId() +
+                " | название: " + getTitle() +
+                " | цена: " + getPrice() +
+                " | описание: " + getDescription());
     }
 }
